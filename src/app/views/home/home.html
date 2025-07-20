@@ -1,0 +1,46 @@
+<div class="container">
+    <mat-toolbar class="custom-toolbar">
+        <span class="custom-title">Planning Poker</span>
+    </mat-toolbar>
+    <div class="content">
+        <div class="welcome-message">
+            <h1>Welcome to Planning Poker!</h1>
+            <!-- <p>Join a session or create a new one to start estimating your user stories.</p> -->
+        </div>
+        <!-- <div class="button-group">
+            <button mat-raised-button color="primary" routerLink="/create-session">Create Session</button>
+            <button mat-raised-button color="accent" routerLink="/join-session">Join Session</button>
+        </div> -->
+    </div>
+
+    <div class="messages">
+        <div *ngFor="let message of messages; let i=index">
+            <div *ngIf="message.userName == userName" class="message-line me">
+                <div class="message me">
+                    <div class="user-name me">{{ message.userName }}</div>
+                    <div> {{ message.text }}</div>
+                </div>
+            </div>
+            <div *ngIf="message.userName != userName"  class="message-line other">
+                <div class="message other">
+                    <div class="user-name other">{{ message.userName }}</div>
+                    <div> {{ message.text }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="messageSender">
+        <form class="form">
+            <mat-form-field class="input">
+                <mat-label>Escreve sua mensagem</mat-label>
+                <input matInput [formControl]="messageControl"> 
+            </mat-form-field>
+            <button (click)="sendMessage()" color="primary" mat-mini-fab aria-label="Enviar">
+                <mat-icon>send</mat-icon> 
+            </button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>{{ currentYear }} Planning Poker. All rights reserved.</p>
+    </div>
+</div>
